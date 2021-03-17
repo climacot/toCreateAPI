@@ -29,7 +29,7 @@ let notes = [
 ]
 
 app.get('/', (request, response) => {
-  response.send('<h1>helo worlsd</h1>')
+  response.send('<h1>helo world</h1>')
 })
 
 app.delete('/api/notes/:id', (request, response) => {
