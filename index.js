@@ -29,7 +29,7 @@ let notes = [
 ]
 
 app.get('/', (request, response) => {
-  response.send('<h1>hello world putos gonorreas ome gonorrea xdxdxdx :v</h1>')
+  response.send('<h1>hello world</h1>')
 })
 
 app.delete('/api/notes/:id', (request, response) => {
@@ -67,7 +67,7 @@ app.post('/api/notes', (request, response) => {
   response.status(201).json(newNote)
 })
 
-app.use((request, responde) => {
+app.use((request, response) => {
   response.status(404).json({
     error: 'Not Found'
   })
