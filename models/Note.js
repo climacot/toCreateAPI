@@ -3,7 +3,11 @@ const { model, Schema } = require('mongoose')
 const noteSchema = new Schema({
   content: String,
   date: Date,
-  important: Boolean
+  important: Boolean,
+  user: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }]
 })
 
 noteSchema.set('toJSON', {
@@ -13,6 +17,7 @@ noteSchema.set('toJSON', {
     delete returnedObject.__v
   }
 })
+
 const Note = model('Note', noteSchema)
 
 module.exports = Note

@@ -3,15 +3,16 @@ require('./mongo.js')
 
 const express = require('express')
 const app = express()
+
 const cors = require('cors')
-// const logger = require('./loggerMiddleware')
-const Note = require('./models/Note')
+
+const Note = require('./models/Note.js')
 const handleErrors = require('./middleware/handleErrors.js')
 const notFound = require('./middleware/notFound.js')
+const userRouter = require('./controllers/users.js')
 
 app.use(cors())
 app.use(express.json())
-// app.use(logger)
 
 app.get('/', (request, response, next) => {
   response.send('<h1>hello world</h1>')
@@ -92,13 +93,13 @@ app.post('/api/notes', (request, response, next) => {
     })
 })
 
+app.use('/api/users', userRouter)
+
 app.use(notFound)
 app.use(handleErrors)
 
 const PORT = process.env.PORT
-
 const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
-
 module.exports = { app, server }
